@@ -7,8 +7,12 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources", // Path to the feature file
-        glue = "com.example.StepDefs", // Package containing step definitions
-        plugin = {"pretty", "html:target/cucumber-reports.html"}
+        glue = "com.example.StepDefs",
+        publish = true,
+        plugin = {"json:target/cucumber-reports/Cucumber,json",
+                "pretty",
+                "html:target/cucumber-reports.html"
+        }
 )
 public class CucumberTestRunner {
 }
