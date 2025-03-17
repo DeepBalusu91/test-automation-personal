@@ -9,9 +9,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources", // Path to the feature file
         glue = "com.example.StepDefs",
         publish = true,
-        plugin = {"json:target/cucumber-reports/Cucumber.json",
-                "pretty",
-                "html:target/cucumber-reports.html"
+        plugin = {"pretty","json:target/cucumber-reports/Cucumber.json",
+                "pretty", "html:target/cucumber-reports.html"
         }
 )
 public class CucumberTestRunner {
