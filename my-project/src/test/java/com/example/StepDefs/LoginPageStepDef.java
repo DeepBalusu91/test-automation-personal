@@ -1,5 +1,6 @@
 package com.example.StepDefs;
 
+import com.example.page.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -34,15 +35,19 @@ public class LoginPageStepDef {
     }
     @When("I enter invalid username and password")
     public void i_enter_invalid_username_and_password() throws InterruptedException {
-        WebElement usernameField = driver.findElement(By.id("email"));
-        WebElement passwordField = driver.findElement(By.id("pass"));
-        WebElement loginButton = driver.findElement(By.name("login"));
+        LoginPage loginPage = new LoginPage(driver);
+
+        String randomUsername = generateRandomString(10);
+        String randomPassword = generateRandomString(10);
+
+        loginPage.enterUsername(randomUsername);
         Thread.sleep(1000);
-        usernameField.sendKeys(generateRandomString(10));
+
+        loginPage.enterPassword(randomPassword);
         Thread.sleep(1000);
-        passwordField.sendKeys(generateRandomString(10));
+
+        loginPage.clickLogin();
         Thread.sleep(1000);
-        loginButton.click();
     }
     @Then("I should see an error message")
     public void i_should_see_an_error_message() {
